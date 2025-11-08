@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio with Animations</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    background: #222;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  nav h2 {
+    font-size: 20px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+  }
+
+  nav ul li a:hover {
+    color: #007bff;
+  }
+
+  section {
+    padding: 80px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Home Section */
+  /* Fullscreen Home Section */
+#home {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  padding: 40px 20px;
+}
+
+.home-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.home-text {
+  flex: 1 1 500px;
+}
+
+.home-text h1 {
+  font-size: 48px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.home-text h2 {
+  font-size: 28px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.home-text p {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.home-text .btn {
+  background: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.home-text .btn:hover {
+  background: #0056b3;
+}
+
+.home-image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.home-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+}
+
+.home-image img:hover {
+  transform: scale(1.05);
+}
+
+  
+
+  /* Other sections */
+  .about, .services, .skills, .contact {
+    background: white;
+    margin: 10px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    padding: 40px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+
+/* Enhanced About Section */
+#about {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  padding: 80px 20px;
+}
+
+.about-points {
+  text-align: left;
+  margin: 30px auto;
+  max-width: 600px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-points li {
+  font-size: 16px;
+  color: #444;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  line-height: 1.6;
+}
+
+.about-points li:last-child {
+  border-bottom: none;
+}
+/* Split Layout for About */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.about-text {
+  flex: 1 1 500px;
+}
+
+.about-text p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.about-points {
+  list-style: none;
+  margin-top: 15px;
+  padding-left: 0;
+}
+
+.about-points li {
+  font-size: 16px;
+  color: #333;
+  padding: 8px 0;
+  position: relative;
+}
+
+.about-image-stats {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.about-image-stats img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.stats div {
+  text-align: center;
+}
+
+.stats h3 {
+  font-size: 24px;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.stats p {
+  font-size: 14px;
+  color: #666;
+}
+.services {
+  padding: 80px 20px;
+  background: #f9f9f9;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+
+.service-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card i {
+  font-size: 36px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.skills {
+  background: #fff;
+  padding: 80px 20px;
+}
+
+.skills-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.skills-text {
+  flex: 1 1 300px;
+  text-align: left;
+}
+
+.skills-text h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.skills-text p {
+  font-size: 16px;
+  color: #555;
+}
+
+.skills-bars {
+  flex: 1 1 400px;
+  width: 100%;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill span {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.bar {
+  background: #ddd;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar .fill {
+  height: 100%;
+  background: #007bff;
+  transition: width 1s ease-in-out;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text, .about-image-stats {
+    flex: 1 1 100%;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+
+  @media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .home-text h1 {
+    font-size: 36px;
+  }
+
+  .home-text h2 {
+    font-size: 20px;
+  }
+
+  .home-text p {
+    font-size: 16px;
+  }
+}
+.contact {
+  background: #f9f9f9;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.contact a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.social-links {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  font-size: 22px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff;
+}
+
+</style>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>My Portfolio</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+ 
+  <section id="home">
+  <div class="home-container">
+    <div class="home-text">
+      <h1>Hi, I'm Riya sharma</h1>
+      <h2>Aspiring Web Developer & Designer</h2>
+      <p>Welcome to my personal portfolio website! I'm passionate about creating clean, modern, and responsive websites using HTML, CSS, and JavaScript.</p>
+      <p>I love solving problems, bringing ideas to life, and continuously learning new web technologies. Explore my projects and feel free to get in touch!</p>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+    <div class="home-image">
+      <img src="C:\Users\Lavsh Sharm\Downloads\WhatsApp Image 2025-11-08 at 19.36.55_cae50b3d.jpg"alt="Profile Picture" />
+    </div>
+  </div>
+</section>
+
+
+<section id="about" class="about fade-in">
+  <div class="about-container">
+   
+    <div class="about-text">
+      <h2 class="section-title">About Me</h2>
+      <p>Hello! I'm <strong>Riya sharma</strong>, a passionate and creative web developer & designer focused on building responsive and elegant websites.</p>
+      <p>I believe that great design is a balance of creativity and functionality.</p>
+      <ul class="about-points">
+        <li>✔ Proficient in HTML, CSS, JavaScript</li>
+        <li>✔ Enthusiastic about clean UI & UX</li>
+        <li>✔ Constant learner & technology explorer</li>
+        <li>✔ Strong communication and team skills</li>
+      </ul>
+    </div>
+
+    
+    <div class="about-image-stats">
+      <img src="C:\Users\Lavsh Sharm\Downloads\WhatsApp Image 2025-11-08 at 19.36.55_cae50b3d.jpg" alt="Riya's photo" />
+      <div class="stats">
+        <div><h3>10+</h3><p>Projects</p></div>
+        <div><h3>8</h3><p>Technologies</p></div>
+        <div><h3>1+</h3><p>Years Learning</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="services" class="services fade-in">
+  <h2 class="section-title">What I Offer</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <i class="fas fa-laptop-code"></i>
+      <h3>Web Development</h3>
+      <p>Responsive, modern websites built with HTML, CSS, JS & React.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-paint-brush"></i>
+      <h3>UI/UX Design</h3>
+      <p>Clean, user-focused designs using Figma and modern design tools.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-search"></i>
+      <h3>SEO & Analytics</h3>
+      <p>Boost your website's visibility and track performance smartly.</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-chalkboard-teacher"></i>
+      <h3>Mentoring</h3>
+      <p>Helping beginners learn web dev basics and best practices.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills fade-in">
+  <div class="skills-container">
+    <div class="skills-text">
+      <h2 class="section-title">My Skills</h2>
+      <p>Here are some of the technologies and tools I work with:</p>
+    </div>
+    <div class="skills-bars">
+      <div class="skill">
+        <span>HTML</span>
+        <div class="bar"><div class="fill" style="width: 95%;"></div></div>
+      </div>
+      <div class="skill">
+        <span>CSS</span>
+        <div class="bar"><div class="fill" style="width: 90%;"></div></div>
+      </div>
+      <div class="skill">
+        <span>JavaScript</span>
+        <div class="bar"><div class="fill" style="width: 85%;"></div></div>
+      </div>
+      <div class="skill">
+        <span>React</span>
+        <div class="bar"><div class="fill" style="width: 80%;"></div></div>
+      </div>
+      <div class="skill">
+        <span>Python</span>
+        <div class="bar"><div class="fill" style="width: 88%;"></div></div>
+      </div>
+      <div class="skill">
+        <span>SQL</span>
+        <div class="bar"><div class="fill" style="width: 75%;"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" class="contact fade-in">
+  <h2 class="section-title">Get in Touch</h2>
+  <p>Email: <a href="mailto:your.email@example.com">riya123@gmail.com</a></p>
+  <p>Phone: <a href="tel:+1234567890">99274</a></p>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+  </div>
+  <a href="#" class="btn">Download Resume</a>
+</section>
+
+
+
+
+  <!-- Fade-in Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
